@@ -626,7 +626,13 @@ micromatch.braces = function(pattern, options) {
   }
 
   function expand() {
-    if ((options && options.nobrace === true) || !hasBraces(pattern)) {
+    var nobrace = false;
+    if (options){
+      if(options.nobrace){
+        nobrace = options.nobrace;
+      }
+    }
+    if (nobrace || !hasBraces(pattern)) {
       return utils.arrayify(pattern);
     }
     return braces(pattern, options);
