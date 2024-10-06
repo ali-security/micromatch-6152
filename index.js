@@ -632,7 +632,7 @@ micromatch.braces = function(pattern, options) {
         nobrace = options.nobrace;
       }
     }
-    if (nobrace === true|| !/\{[^{}]*\}/.test(pattern)) {
+    if (nobrace === true|| !/\{[^]*\}/.test(pattern)) {
       return utils.arrayify(pattern);
     }
     return braces(pattern, options);
