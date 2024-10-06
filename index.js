@@ -633,7 +633,7 @@ micromatch.braces = function(pattern, options) {
       }
     }
     if (nobrace || !hasBraces(pattern)) {
-      return utils.arrayify(pattern);
+      return [pattern];
     }
     return braces(pattern, options);
   }
