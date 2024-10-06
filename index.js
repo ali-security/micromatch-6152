@@ -19,9 +19,21 @@ var cache = require('./lib/cache');
 var utils = require('./lib/utils');
 var MAX_LENGTH = 1024 * 64;
 
-var hasBraces = function(v) {
-  var index = v.indexOf("{");
-  return index > -1 && v.indexOf("}", index) > -1;
+var hasBraces = function(input) {
+  let start = input.indexOf('{');
+  let end = input.lastIndexOf('}');
+
+  // Check if both '{' and '}' exist in the string
+  if (start === -1 || end === -1 || start > end) {
+      return false;
+  }
+
+  // Extract the content between the braces
+  let content = input.slice(start + 1, end);
+
+  // Now you can do whatever check you need on the content if needed.
+  // For now, just ensuring the input follows the {content} pattern
+  return true;
 };
 
 /**
@@ -632,7 +644,7 @@ micromatch.braces = function(pattern, options) {
         nobrace = options.nobrace;
       }
     }
-    if (nobrace === true|| !/\{[^]*\}/.test(pattern)) {
+    if (nobrace === true|| !hasBraces(pattern)) {
       return utils.arrayify(pattern);
     }
     return braces(pattern, options);
