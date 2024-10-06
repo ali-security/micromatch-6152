@@ -632,8 +632,8 @@ micromatch.braces = function(pattern, options) {
         nobrace = options.nobrace;
       }
     }
-    if (nobrace || !hasBraces(pattern)) {
-      return [pattern];
+    if (nobrace === true|| !hasBraces(pattern)) {
+      return utils.arrayify(pattern);
     }
     return braces(pattern, options);
   }
