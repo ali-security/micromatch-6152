@@ -19,8 +19,8 @@ var cache = require('./lib/cache');
 var utils = require('./lib/utils');
 var MAX_LENGTH = 1024 * 64;
 
-const hasBraces = function(v) {
-  const index = v.indexOf("{");
+var hasBraces = function(v) {
+  var index = v.indexOf("{");
   return index > -1 && v.indexOf("}", index) > -1;
 };
 
